@@ -14,10 +14,12 @@ namespace Maze
 
         protected byte[,] Map;
 
+        private int _scale = 6;
+
         private void Start()
         {
             InitialiseMap();
-            Generate();
+            CreateCorridor();
             DrawMap();
         }
 
@@ -30,7 +32,7 @@ namespace Maze
                     Map[x, z] = (int)MazeElement.Wall;
         }
 
-        protected virtual void Generate()
+        protected virtual void CreateCorridor()
         {
             for (int z = 0; z < _depth; z++)
                 for (int x = 0; x < _width; x++)
@@ -46,8 +48,9 @@ namespace Maze
                 {
                     if (Map[x, z] == (int)MazeElement.Wall)
                     {
-                        Vector3 pos = new Vector3(x, 0, z);
+                        Vector3 pos = new Vector3(x * _scale, 0, z * _scale);
                         GameObject wall = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                        wall.transform.localScale = new Vector3(_scale, _scale, _scale);
                         wall.transform.position = pos;
                     }
                 }
