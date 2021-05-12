@@ -18,12 +18,12 @@ namespace Maze
 
         private void Start()
         {
-            InitialiseMap();
+            InitializeMap();
             CreateCorridor();
             DrawMap();
         }
 
-        private void InitialiseMap()
+        private void InitializeMap()
         {
             Map = new byte[_width, _depth];
 
@@ -55,6 +55,35 @@ namespace Maze
                     }
                 }
             }
+        }
+
+        public int CountSquareNeighbours(int x, int z)
+        {
+            int count = 0;
+            if (x <= 0 || x >= Width - 1 || z <= 0 || z >= Depth - 1) return 5;
+            if (Map[x - 1, z] == (int)MazeElement.Corridor) count++;
+            if (Map[x + 1, z] == (int)MazeElement.Corridor) count++;
+            if (Map[x, z - 1] == (int)MazeElement.Corridor) count++;
+            if (Map[x, z + 1] == (int)MazeElement.Corridor) count++;
+
+            return count;
+        }
+
+        public int CountDiagonalNeighbours(int x, int z)
+        {
+            int count = 0;
+            if (x <= 0 || x >= Width - 1 || z <= 0 || z >= Depth - 1) return 5;
+            if (Map[x - 1, z - 1] == (int)MazeElement.Corridor) count++;
+            if (Map[x - 1, z + 1] == (int)MazeElement.Corridor) count++;
+            if (Map[x + 1, z + 1] == (int)MazeElement.Corridor) count++;
+            if (Map[x + 1, z - 1] == (int)MazeElement.Corridor) count++;
+
+            return count;
+        }
+
+        public int CountAllNeighbours(int x, int z)
+        {
+            return CountSquareNeighbours(x, z) + CountDiagonalNeighbours(x, z);
         }
     }
 }
