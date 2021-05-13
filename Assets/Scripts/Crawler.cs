@@ -14,7 +14,7 @@ namespace Maze
             for (int i = 0; i < 3; i++)
             {
                 z = Random.Range(1, Depth - 1);
-                Generate(Map, x, z, Depth, "Depth");
+                GenerateWay(Map, x, z, Depth, "Depth");
             }
 
 
@@ -22,11 +22,11 @@ namespace Maze
             for (int i = 0; i < 2; i++)
             {
                 x = Random.Range(1, Width - 1);
-                Generate(Map, x, z, Width, "Width");
+                GenerateWay(Map, x, z, Width, "Width");
             }
         }
 
-        private void Generate(byte[,] map, int x, int z, int limit, string wayPoint)
+        private void GenerateWay(byte[,] map, int x, int z, int limit, string wayPoint)
         {
             bool done = false;
 
