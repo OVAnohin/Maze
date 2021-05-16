@@ -26,7 +26,7 @@ namespace Maze
             }
         }
 
-        private void GenerateWay(byte[,] map, int x, int z, int limit, string wayPoint)
+        private void GenerateWay(int[,] map, int x, int z, int limit, string wayPoint)
         {
             bool done = false;
 

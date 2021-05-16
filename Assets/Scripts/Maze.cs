@@ -12,7 +12,7 @@ namespace Maze
         public int Width => _width;
         public int Depth => _depth;
 
-        protected byte[,] Map;
+        protected int[,] Map;
 
         private int _scale = 6;
 
@@ -25,7 +25,7 @@ namespace Maze
 
         private void InitializeMap()
         {
-            Map = new byte[_width, _depth];
+            Map = new int[_width, _depth];
 
             for (int z = 0; z < _depth; z++)
                 for (int x = 0; x < _width; x++)
