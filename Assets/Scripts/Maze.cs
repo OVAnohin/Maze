@@ -9,9 +9,12 @@ namespace Maze
         [SerializeField] private int _width = 30;
         [SerializeField] private int _depth = 30;
 
+
         public int Width => _width;
         public int Depth => _depth;
+        public List<MapLocation> Directions => _directions;
 
+        private List<MapLocation> _directions = new List<MapLocation>() { new MapLocation(0, 1), new MapLocation(1, 0), new MapLocation(-1, 0), new MapLocation(0, -1) };
         protected int[,] Map;
 
         private int _scale = 6;

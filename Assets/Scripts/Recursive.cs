@@ -19,10 +19,12 @@ namespace Maze
                 return;
 
             Map[x, z] = (int)MazeElement.Corridor;
-            CreateCorridor(x + 1, z);
-            CreateCorridor(x - 1, z);
-            CreateCorridor(x, z + 1);
-            CreateCorridor(x, z - 1);
+
+            Directions.Shuffle();
+            CreateCorridor(x + Directions[0].X, z + Directions[0].Z);
+            CreateCorridor(x + Directions[1].X, z + Directions[1].Z);
+            CreateCorridor(x + Directions[2].X, z + Directions[2].Z);
+            CreateCorridor(x + Directions[3].X, z + Directions[3].Z);
         }
     }
 }

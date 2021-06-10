@@ -6,7 +6,6 @@ namespace Maze
 {
     public class Wilsons : Maze
     {
-        private List<MapLocation> _directions = new List<MapLocation>() { new MapLocation(0, 1), new MapLocation(1, 0), new MapLocation(-1, 0), new MapLocation(0, -1) };
         private List<MapLocation> _notUsed = new List<MapLocation>();
 
         protected override void CreateCorridor()
@@ -41,10 +40,10 @@ namespace Maze
         private int CountSquareMazeNeighbours(int x, int z)
         {
             int count = 0;
-            for (int d = 0; d < _directions.Count; d++)
+            for (int d = 0; d < Directions.Count; d++)
             {
-                int nextX = x + _directions[d].X;
-                int nextZ = z + _directions[d].Z;
+                int nextX = x + Directions[d].X;
+                int nextZ = z + Directions[d].Z;
                 if (Map[nextX, nextZ] == (int)MazeElement.StartPosition)
                     count++;
             }
@@ -72,9 +71,9 @@ namespace Maze
                 if (CountSquareMazeNeighbours(startX, startZ) > 1)
                     break;
 
-                int random = Random.Range(0, _directions.Count);
-                int nextX = startX + _directions[random].X;
-                int nextZ = startZ + _directions[random].Z;
+                int random = Random.Range(0, Directions.Count);
+                int nextX = startX + Directions[random].X;
+                int nextZ = startZ + Directions[random].Z;
                 if (CountSquareNeighbours(nextX, nextZ) < 2)
                 {
                     startX = nextX;
